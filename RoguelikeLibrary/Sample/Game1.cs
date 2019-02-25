@@ -17,8 +17,9 @@ namespace Sample
         private const int screenHeight = 600;
         public const int CHARACTER_SIZE = 16;
 
-        public ScreenManager screenManager;
-        public MainMenuScreen mainMenu;
+        public ScreenManager ScreensManager;
+        public MainMenuScreen MainMenu;
+        public GameplayScreen GamePlay;
 
         public Game1()
         {
@@ -33,11 +34,12 @@ namespace Sample
 
             Components.Add(new InputHandler(this));
 
-            screenManager = new ScreenManager();
+            ScreensManager = new ScreenManager();
 
-            mainMenu = new MainMenuScreen(this);
+            MainMenu = new MainMenuScreen(this);
+            GamePlay = new GameplayScreen(this);
 
-            screenManager.PushScreen(mainMenu);
+            ScreensManager.PushScreen(MainMenu);
         }
 
         protected override void Initialize()
@@ -50,7 +52,7 @@ namespace Sample
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            screenManager.Initialize();
+            ScreensManager.Initialize();
         }
 
         protected override void UnloadContent()
@@ -65,7 +67,7 @@ namespace Sample
                 Exit();
             }
 
-            screenManager.Update(gameTime);
+            ScreensManager.Update(gameTime);
 
 
             base.Update(gameTime);
@@ -75,7 +77,7 @@ namespace Sample
         {
             GraphicsDevice.Clear(Color.Black);
 
-            screenManager.Draw(spriteBatch);
+            ScreensManager.Draw(spriteBatch);
 
             base.Draw(gameTime);
         }
