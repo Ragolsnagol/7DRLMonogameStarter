@@ -24,7 +24,7 @@ namespace Library.Entities
 
         public virtual void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
-            spriteBatch.DrawString(font, symbol, position, color);
+            spriteBatch.DrawString(font, symbol, position * Engine.CharacterSize, color);
         }
 
         public virtual void Update(GameTime gameTime)

@@ -1,4 +1,5 @@
-﻿using Library.MapEngine;
+﻿using Library.Entities;
+using Library.MapEngine;
 using Library.Screens;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,6 +14,7 @@ namespace Sample.Screens
     public class GameplayScreen : Screen
     {
         private Map map;
+        private Player player;
 
         public GameplayScreen(Game game) : base(game)
         {
@@ -25,6 +27,7 @@ namespace Sample.Screens
 
             map = new Map(20, 20);
             map.FillTestMap();
+            player = new Player("@", new Vector2(1, 1), Color.White);
         }
 
         public override void LoadContent()
@@ -37,13 +40,14 @@ namespace Sample.Screens
             spriteBatch.Begin();
 
             map.Draw(spriteBatch, menuFont);
+            player.Draw(spriteBatch, menuFont);
 
             spriteBatch.End();
         }
 
         public override void Update(GameTime gameTime)
         {
-            
+            player.Update(gameTime);
         }
     }
 }

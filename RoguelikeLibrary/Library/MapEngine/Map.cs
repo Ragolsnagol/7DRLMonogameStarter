@@ -12,6 +12,7 @@ namespace Library.MapEngine
     public class Map
     {
         private Tile[,] tiles;
+        private int[,] blockedMap;
         private int width;
         private int height;
 
@@ -21,9 +22,10 @@ namespace Library.MapEngine
             height = h;
 
             tiles = new Tile[width, height];
+            blockedMap = new int[width, height];
         }
 
-        public void FillTestMap(int characterSize = 12)
+        public void FillTestMap()
         {
             for (int x = 0; x < width; x++)
             {
@@ -31,14 +33,18 @@ namespace Library.MapEngine
                 {
                     if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
                     {
-                        tiles[x, y] = new Tile("#", new Vector2(x * characterSize, y * characterSize), Color.White, false);
+                        tiles[x, y] = new Tile("#", new Vector2(x, y), Color.White, false);
+                        blockedMap[x, y] = 1;
                     }
                     else
                     {
-                        tiles[x, y] = new Tile(".", new Vector2(x * characterSize, y * characterSize), Color.White, true);
+                        tiles[x, y] = new Tile(".", new Vector2(x, y), Color.White, true);
+                        blockedMap[x, y] = 0;
                     }
                 }
             }
+
+            Engine.BlockedMap = blockedMap;
         }
 
         public void Draw(SpriteBatch spriteBatch, SpriteFont font)

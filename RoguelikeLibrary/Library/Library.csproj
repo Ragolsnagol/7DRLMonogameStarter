@@ -45,8 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine.cs" />
+    <Compile Include="Entities\Actor.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\Tile.cs" />
     <Compile Include="InputHandler.cs" />
     <Compile Include="MapEngine\Map.cs" />
