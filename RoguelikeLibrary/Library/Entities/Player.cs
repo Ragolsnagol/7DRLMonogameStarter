@@ -10,6 +10,8 @@ namespace Library.Entities
 {
     public class Player : Actor
     {
+        public Vector2 Position => position;
+
         public Player(string sym, Vector2 pos, Color col) : base(sym, pos, col)
         {
 
